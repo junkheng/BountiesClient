@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>ToDo List</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="/css/app.css">
+    </head>
+    <body>
+        <ul>
+            <% jsonBody.forEach((o) => { %>
+                <li class="task-list"><%= o.task %></li>
+            <% }) %>
+        </ul>
+        <form method="post" action="/todo">
+            <input name="task" id="task">
+            <input name="completed" id="completed">
+            <input type="submit" value="Submit">
+        </form>        
+        <script src="" async defer></script>
+    </body>
+</html>
