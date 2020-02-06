@@ -1,7 +1,23 @@
 body {
-    background: black;
+    background: linear-gradient(to bottom left, #921c1c, #138aeb) no-repeat center center fixed;
+    display: grid;
+}
+
+button {
+    background: linear-gradient(to bottom right, rgb(91, 117, 168), #51d67d);
+    color: black;
+    font-size: large;
+    border-radius: 5px;
+    width: 7em;
+    height: 2em;
+
 }
 
 .task-list {
     color: white;
+    margin: auto;
+}
+
+.todo-item {
+    margin: 1em 1em;
 }

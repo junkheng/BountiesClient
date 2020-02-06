@@ -22,7 +22,6 @@ router.get('/', (req, res) => { // only need to put '/' because in app.js file w
 })
 
 router.post('/', (req, res) => {
-    res.setHeader('Content-Type', 'application/json')
     request.post({
         url: 'http://localhost:3000/todo',
         form: {
@@ -31,7 +30,22 @@ router.post('/', (req, res) => {
         },
     }, (error, response, body) => {
         console.log(body)
+        res.redirect(302, '/todo')
     })
 })
+
+router.delete('/:id', (req, res) => {
+    request.delete({
+        url: 'http://localhost:3000/todo/:id',
+        form: {
+            id: req.body.id
+        },
+    }, (error, response, body) => {
+        console.log(body)
+        res.redirect(302, '/todo')
+    })
+})
+
+
 
 module.exports = router
