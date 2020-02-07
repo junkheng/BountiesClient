@@ -1,7 +1,9 @@
+/* BASE */
 body {
     background: linear-gradient(to bottom left, #5ad1e0, #138aeb) no-repeat center center fixed;
     display: grid;
     margin: 0;
+    font-family: fantasy;
 }
 
 button {
@@ -11,9 +13,9 @@ button {
     border-radius: 5px;
     width: 7em;
     height: 2em;
-
 }
 
+/* banner classes */
 .banner-container {
     background-color: #413e3e;
     width: 100%;
@@ -25,6 +27,19 @@ button {
     color: white;
     text-align: center;
 }
+
+
+/* todo items classes */
+.form-container {
+    display: grid;
+    align-content: center;
+    margin: auto;
+}
+
+.form-box {
+    width: 50%;;
+}
+
 .task-container {
     margin: auto;
     background-color: rgba(253, 253, 253, 0.1);
@@ -34,8 +49,23 @@ button {
 .task-list {
     color: white;
     margin: auto;
+    padding: 1em 1em;
 }
 
 .todo-item {
     margin: 1em 1em;
+    text-align: left;
+    min-width: 20em;
+}
+
+/* buttons */
+.delete-button {
+    float: right;
+    background: rgb(243, 54, 54);
+    margin: 0;
+}
+
+.submit-button {
+    width: 30;
+    color: white;
 }
