@@ -26,7 +26,7 @@ router.post('/', (req, res) => {
         url: 'http://localhost:3000/todo',
         form: {
             task: req.body.task,
-            completed: req.body.completed
+            completed: req.body.completed || false
         },
     }, (error, response, body) => {
         console.log(body)
@@ -34,9 +34,9 @@ router.post('/', (req, res) => {
     })
 })
 
-router.delete('/:id', (req, res) => {
+router.post('/delete/:id', (req, res) => {
     request.delete({
-        url: 'http://localhost:3000/todo/:id',
+        url: 'http://localhost:3000/todo/delete/:id',
         form: {
             id: req.body.id
         },

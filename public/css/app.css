@@ -1,6 +1,7 @@
 body {
-    background: linear-gradient(to bottom left, #921c1c, #138aeb) no-repeat center center fixed;
+    background: linear-gradient(to bottom left, #5ad1e0, #138aeb) no-repeat center center fixed;
     display: grid;
+    margin: 0;
 }
 
 button {
@@ -11,6 +12,23 @@ button {
     width: 7em;
     height: 2em;
 
+}
+
+.banner-container {
+    background-color: #413e3e;
+    width: 100%;
+    height: 5em;
+    margin: auto auto 3em auto;
+}
+
+.banner-content {
+    color: white;
+    text-align: center;
+}
+.task-container {
+    margin: auto;
+    background-color: rgba(253, 253, 253, 0.1);
+    padding: 5em 10em;
 }
 
 .task-list {
