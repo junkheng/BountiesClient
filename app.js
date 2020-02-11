@@ -4,11 +4,13 @@ const port = process.env.port || 3001
 
 const indexRouter = require('./routes/index')
 const todoRouter = require('./routes/todo/todoRoutes')
+const methodOverride = require('method-override');
 
 
 app.set('view engine', 'ejs')
 app.use(express.static(__dirname + '/public'))
 app.use(express.urlencoded({ extended: true }))
+app.use(methodOverride('_method'));
 
 // route paths must be after all the above config are set in place
 app.use('/', indexRouter)

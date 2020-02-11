@@ -14,17 +14,19 @@
             </h1>
         </div>
         <div class="task-container">
-            <form class="form-container" method="post" action="/todo">
-                <input class="form-box" name="task" id="task">
-                <button class="submit-button" type="submit">Add To List</button>
-            </form>    
+            <div class="task-list">
+                <form class="form-box" method="post" action="/todo">
+                    <input class="input-item" name="task" id="task">
+                    <button class="submit-button" type="submit">Add To List</button>
+                </form>        
+            </div>
             <div class="task-list">
                 <% jsonBody.forEach((todo) => { %>
                     <form action="/todo/delete/<%=todo._id%>" method="POST">
-                        <h2 class="todo-item"><%= todo.task %><button class="delete-button" href="/todo/delete/<%=todo._id%>">Delete</button></h2>
+                        <h2 class="todo-item"><%= todo.task %><button class="delete-button">Delete</button></h2>
                     </form>
                 <% }) %>
-            </div>    
+            </div>
         </div>
         <script src="" async defer></script>
     </body>

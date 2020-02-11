@@ -35,29 +35,15 @@ router.post('/', (req, res) => {
 })
 
 router.post('/delete/:id', (req, res) => {
+    console.log(req.params)
+    // console.log(req.body)
     request({
         method: 'DELETE',
-        url: 'http://localhost:3000/todo/delete/:id',
-        id: req.params.id
+        url: `http://localhost:3000/todo/delete/${req.params.id}`,
     }, (error, response, body) => {
         console.log(body)
         res.redirect(302, '/todo')
     })
 })
-
-// router.post('/delete/:id', (req, res) => {
-//     console.log(req.params.id)
-//     request.delete({
-//         url: 'http://localhost:3000/todo/delete/:id',
-//         form: {
-//             id: req.params.id
-//         },
-//     }, (error, response, body) => {
-//         console.log(body)
-//         res.redirect(302, '/todo')
-//     })
-// })
-
-
 
 module.exports = router

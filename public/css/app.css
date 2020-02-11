@@ -7,7 +7,7 @@ body {
 }
 
 button {
-    background: linear-gradient(to bottom right, rgb(91, 117, 168), #51d67d);
+    background: #51d67d;
     color: black;
     font-size: large;
     border-radius: 5px;
@@ -31,13 +31,12 @@ button {
 
 /* todo items classes */
 .form-container {
-    display: grid;
-    align-content: center;
-    margin: auto;
+    display: block;
 }
 
 .form-box {
-    width: 50%;;
+    min-width: 50%;
+    text-align: center;
 }
 
 .task-container {
@@ -58,14 +57,26 @@ button {
     min-width: 20em;
 }
 
+.input-item {
+    background-color: rgb(185, 194, 191);
+    color: black;
+    margin: 1em 1em;
+    text-align: left;
+    min-width: 20em;
+    min-height: 3em;
+    border: thin;
+    border-radius: 5px;
+}
+
 /* buttons */
 .delete-button {
     float: right;
     background: rgb(243, 54, 54);
-    margin: 0;
+    margin: 0 0 0 2em;
 }
 
 .submit-button {
     width: 30;
     color: white;
 }
+
