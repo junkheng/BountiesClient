@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 router.get('/', (req, res) => { // only need to put '/' because in app.js file we have set app.use /todo and loads this todoRoutes file
     try {
         app.set('json spaces', 2)
-        request('http://localhost:3000/todo', (error, response, body) => {
+        request('http://localhost:8080/todo', (error, response, body) => {
             let jsonBody = JSON.parse(body)
             res.render('display', {jsonBody})
         })    
@@ -23,7 +23,7 @@ router.get('/', (req, res) => { // only need to put '/' because in app.js file w
 
 router.post('/', (req, res) => {
     request.post({
-        url: 'http://localhost:3000/todo',
+        url: 'http://localhost:8080/todo',
         form: {
             task: req.body.task,
             completed: req.body.completed || false
@@ -39,7 +39,7 @@ router.post('/delete/:id', (req, res) => {
     // console.log(req.body)
     request({
         method: 'DELETE',
-        url: `http://localhost:3000/todo/delete/${req.params.id}`,
+        url: `http://localhost:8080/todo/delete/${req.params.id}`,
     }, (error, response, body) => {
         console.log(body)
         res.redirect(302, '/todo')
