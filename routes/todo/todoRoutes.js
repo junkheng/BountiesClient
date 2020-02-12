@@ -1,10 +1,8 @@
 // /todo router
-
 const express = require('express')
 const router = express.Router()
 const request = require('request')
 const app = express()
-const http = require('http')
 const bodyParser = require('body-parser')
 
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -34,7 +32,20 @@ router.post('/', (req, res) => {
     })
 })
 
-router.post('/delete/:id', (req, res) => {
+router.post('/:id', (req, res) => {
+    request.put({
+        url: `http://localhost:8080/todo/${req.params.id}`,
+        form: {
+            task: req.body.task,
+            completed: req.body.completed || false
+        },
+    }, (error, response, body) => {
+        console.log(body)
+        res.redirect(302, '/todo')
+    })
+})
+
+router.get('/delete/:id', (req, res) => {
     console.log(req.params)
     // console.log(req.body)
     request({

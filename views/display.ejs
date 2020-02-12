@@ -14,20 +14,33 @@
             </h1>
         </div>
         <div class="task-container">
-            <div class="task-list">
-                <form class="form-box" method="post" action="/todo">
-                    <input class="input-item" name="task" id="task">
-                    <button class="submit-button" type="submit">Add To List</button>
+            <div class="add-task-list">
+                <form class="form-box" method="post">
+                    <input class="input-item" name="task" placeholder="I need to get this done...">
+                    <button class="submit-button" type="submit" action="/todo">Add To List</button>
                 </form>        
             </div>
             <div class="task-list">
                 <% jsonBody.forEach((todo) => { %>
-                    <form action="/todo/delete/<%=todo._id%>" method="POST">
-                        <h2 class="todo-item"><%= todo.task %><button class="delete-button">Delete</button></h2>
-                    </form>
+                    <div class="width80">
+                        <form action="/todo/<%=todo._id%>" method="POST">
+                            <input type="text" value="<%= todo.task %>" class="todo-item" name="task"> 
+                                <button class="edit-button" type="submit">Edit</button>
+                            </input>
+                            
+                        </form>    
+                    </div>
+                    <div class="width20">
+                        <a href="/todo/delete/<%=todo._id%>"><button class="delete-button">Delete</button></a>
+                    </div>
                 <% }) %>
             </div>
         </div>
-        <script src="" async defer></script>
+        <script>
+            function editTodo() {
+                console.log('clicked todo item')
+                document.getElementById('todo-item').type = 'text'
+            }
+        </script>
     </body>
 </html>

@@ -3,7 +3,7 @@ body {
     background: linear-gradient(to bottom left, #5ad1e0, #138aeb) no-repeat center center fixed;
     display: grid;
     margin: 0;
-    font-family: fantasy;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 button {
@@ -45,20 +45,40 @@ button {
     padding: 5em 10em;
 }
 
-.task-list {
+.add-task-list {
     color: white;
     margin: auto;
     padding: 1em 1em;
 }
 
+.task-list {
+    color: white;
+    margin: auto;
+    padding: 1em 1em;
+    width: 80%;
+}
+
+.width80 {
+    float: left;
+    width: 80%;
+    overflow: hidden;
+}
+
+.width20 {
+    width: 20%;
+    float: right;
+    overflow: hidden;
+}
+
 .todo-item {
-    margin: 1em 1em;
+    margin: 0;
     text-align: left;
-    min-width: 20em;
+    min-width: 5em;
+    /* background-color: rgba(255, 255, 255, 0.192); */
 }
 
 .input-item {
-    background-color: rgb(185, 194, 191);
+    background-color: rgb(255, 255, 255);
     color: black;
     margin: 1em 1em;
     text-align: left;
@@ -71,8 +91,9 @@ button {
 /* buttons */
 .delete-button {
     float: right;
-    background: rgb(243, 54, 54);
+    background: rgb(243, 108, 54);
     margin: 0 0 0 2em;
+    width: 6em;
 }
 
 .submit-button {
@@ -80,3 +101,11 @@ button {
     color: white;
 }
 
+.edit-button {
+    float: right;
+    background: rgb(13, 212, 102);
+    overflow: hidden;
+    color: white;
+    /* margin: 0 0 0 2em; */
+    /* width: 6em; */
+}
