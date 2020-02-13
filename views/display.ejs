@@ -25,9 +25,8 @@
                     <div class="width80">
                         <form action="/todo/<%=todo._id%>" method="POST">
                             <input type="text" value="<%= todo.task %>" class="todo-item" name="task"> 
-                                <button class="edit-button" type="submit">Edit</button>
+                                <button class="edit-button" type="submit">Update</button>
                             </input>
-                            
                         </form>    
                     </div>
                     <div class="width20">
@@ -36,11 +35,5 @@
                 <% }) %>
             </div>
         </div>
-        <script>
-            function editTodo() {
-                console.log('clicked todo item')
-                document.getElementById('todo-item').type = 'text'
-            }
-        </script>
     </body>
 </html>
