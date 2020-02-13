@@ -31,6 +31,7 @@ router.post('/', (req, res) => {
         form: {
             task: req.body.task,
             completed: req.body.completed || false,
+            deleted: req.body.deleted || false
         },
     }, (error, response, body) => {
         console.log(body)
@@ -45,7 +46,8 @@ router.post('/:id', (req, res) => {
         url: `http://localhost:8080/todo/${req.params.id}`,
         form: {
             task: req.body.task,
-            completed: req.body.completed || false
+            completed: req.body.completed || false,
+            deleted: req.body.deleted || false
         },
     }, (error, response, body) => {
         console.log(body)
