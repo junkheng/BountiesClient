@@ -24,6 +24,17 @@ router.get('/', (req, res) => { // only need to put '/' because in app.js file w
     }
 })
 
+router.get('/archive', async (req, res) => {
+    try {
+        request('http://localhost:8080/todo/archive', (error, response, body) => {
+            let jsonBody = JSON.parse(body)
+            res.render('archive', {jsonBody})
+        })
+    } catch (error) {
+        res.status(500).send(error)
+    }
+})
+
 router.post('/', (req, res) => {
     request.post({
         headers: { 'authorization': localStorage.token },
