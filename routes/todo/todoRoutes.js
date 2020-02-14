@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 if (typeof localStorage === "undefined" || localStorage === null) {
     let LocalStorage = require('node-localstorage').LocalStorage;
     localStorage = new LocalStorage('./scratch');
-  }
+}
 
 router.get('/', (req, res) => { // only need to put '/' because in app.js file we have set app.use /todo and loads this todoRoutes file
     try {
@@ -41,9 +41,10 @@ router.post('/', (req, res) => {
         url: 'http://localhost:8080/todo',
         form: {
             task: req.body.task,
-            completed: req.body.completed || false,
-            deleted: req.body.deleted || false,
-            date: Date.now()
+            completed: false,
+            deleted: false,
+            date: Date.now(),
+            updated_at: Date.now()
         },
     }, (error, response, body) => {
         console.log(body)
@@ -59,7 +60,8 @@ router.post('/:id', (req, res) => {
         form: {
             task: req.body.task,
             completed: req.body.completed || false,
-            deleted: req.body.deleted || false
+            deleted: req.body.deleted || false,
+            updated_at: Date.now()
         },
     }, (error, response, body) => {
         console.log(body)
@@ -72,7 +74,8 @@ router.post('/delete/:id', (req, res) => {
         headers: { 'authorization': localStorage.token },
         url: `http://localhost:8080/todo/${req.params.id}`,
         form: {
-            deleted: true
+            deleted: true,
+            updated_at: Date.now()
         }
     }, (error, response, body) => {
         console.log(body)
@@ -80,6 +83,19 @@ router.post('/delete/:id', (req, res) => {
     })
 })
 
+router.post('/completed/:id', (req, res) => {
+    request.put({
+        headers: { 'authorization': localStorage.token },
+        url: `http://localhost:8080/todo/${req.params.id}`,
+        form: {
+            completed: true,
+            updated_at: Date.now()
+        }
+    }, (error, response, body) => {
+        console.log(body)
+        res.redirect(302, '/todo')
+    })
+})
 
 // actual deletion
 // router.get('/delete/:id', (req, res) => {

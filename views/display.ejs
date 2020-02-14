@@ -20,20 +20,39 @@
                     <button class="submit-button" type="submit" action="/todo">Add To List</button>
                 </form>        
             </div>
-            <div class="task-list">
+            <div class="task-list"><h1>You need to get these done!</h1>
                 <% jsonBody.forEach((todo) => { %>
+                    <% if (!todo.completed) { %>
                     <div class="width80">
                         <form action="/todo/<%=todo._id%>" method="POST">
-                            <input type="text" value="<%= todo.task %>" class="todo-item" name="task"> 
-                                <button class="edit-button" type="submit">Update</button>
-                            </input>
+                            <input type="checkbox" id="completed-item" name="completed-item">
+                            <label for="completed-item"><input type="text" value="<%= todo.task %>" class="todo-item" name="task">123 </label>
+                            <button class="edit-button" type="submit">Update</button>
                         </form>    
                     </div>
                     <div class="width20">
                         <form action="/todo/delete/<%=todo._id%>" method="POST">
-                            <button class="delete-button">Delete</button>
+                            <button class="delete-button">X</button>
                         </form>
                     </div>
+                    <% } %>
+                <% }) %>    
+            </div>
+            <div class="completed-list"><h1>Your completed tasks:</h1>
+                <% jsonBody.forEach((todo) => { %>
+                    <% if (todo.completed) { %>
+                        <div class="width80">
+                            <form action="/todo/<%=todo._id%>" method="POST">
+                                <input type="text" value="<%= todo.task %>" class="todo-item" name="task"> 
+                                <button class="edit-button" type="submit">Update</button>
+                            </form>    
+                        </div>
+                        <div class="width20">
+                            <form action="/todo/delete/<%=todo._id%>" method="POST">
+                                <button class="delete-button">X</button>
+                            </form>
+                        </div>    
+                    <% } %>
                 <% }) %>
             </div>
         </div>

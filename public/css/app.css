@@ -95,6 +95,24 @@ input.todo-item {
     border-radius: 5px;
 }
 
+/* completed list items */
+.completed-list {
+    color: white;
+    margin: auto;
+    padding: 1em 1em;
+    width: 80%;
+}
+
+input[type=checkbox] + label {
+    color: #ccc;
+    font-style: italic;
+}
+
+input[type=checkbox]:checked + label {
+    color: #f00;
+    font-style: normal;
+}
+
 /* buttons */
 .delete-button {
     float: right;

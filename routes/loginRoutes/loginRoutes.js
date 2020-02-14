@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 if (typeof localStorage === "undefined" || localStorage === null) {
     let LocalStorage = require('node-localstorage').LocalStorage;
     localStorage = new LocalStorage('./scratch');
-  }
+}
 
 router.post('/', (req, res) => { // only need to put '/' because in app.js file we have set app.use /login and loads this loginRoutes file
     request({
