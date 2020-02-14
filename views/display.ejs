@@ -30,7 +30,9 @@
                         </form>    
                     </div>
                     <div class="width20">
-                        <a href="/todo/delete/<%=todo._id%>"><button class="delete-button">Delete</button></a>
+                        <form action="/todo/delete/<%=todo._id%>" method="POST">
+                            <button class="delete-button">Delete</button>
+                        </form>
                     </div>
                 <% }) %>
             </div>

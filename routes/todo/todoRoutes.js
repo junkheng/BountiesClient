@@ -31,7 +31,8 @@ router.post('/', (req, res) => {
         form: {
             task: req.body.task,
             completed: req.body.completed || false,
-            deleted: req.body.deleted || false
+            deleted: req.body.deleted || false,
+            date: Date.now()
         },
     }, (error, response, body) => {
         console.log(body)
@@ -55,17 +56,32 @@ router.post('/:id', (req, res) => {
     })
 })
 
-router.get('/delete/:id', (req, res) => {
-    console.log(req.params)
-    // console.log(req.body)
-    request({
+router.post('/delete/:id', (req, res) => {
+    request.put({
         headers: { 'authorization': localStorage.token },
-        method: 'DELETE',
-        url: `http://localhost:8080/todo/delete/${req.params.id}`,
+        url: `http://localhost:8080/todo/${req.params.id}`,
+        form: {
+            deleted: true
+        }
     }, (error, response, body) => {
         console.log(body)
         res.redirect(302, '/todo')
     })
 })
+
+
+// actual deletion
+// router.get('/delete/:id', (req, res) => {
+//     console.log(req.params)
+//     // console.log(req.body)
+//     request({
+//         headers: { 'authorization': localStorage.token },
+//         method: 'DELETE',
+//         url: `http://localhost:8080/todo/delete/${req.params.id}`,
+//     }, (error, response, body) => {
+//         console.log(body)
+//         res.redirect(302, '/todo')
+//     })
+// })
 
 module.exports = router
