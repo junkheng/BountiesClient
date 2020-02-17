@@ -22,6 +22,7 @@ input.todo-item {
     width: 20em;
     cursor: pointer;
     padding-left: 2em;
+    overflow: visible;
 }
 
 /* banner classes */
@@ -37,6 +38,9 @@ input.todo-item {
     text-align: center;
 }
 
+.main-wrapper {
+    display: grid;
+}
 
 /* todo items classes */
 .form-container {
@@ -49,8 +53,8 @@ input.todo-item {
 }
 
 .task-container {
-    margin: auto;
     background-color: rgba(253, 253, 253, 0.1);
+    margin: auto;
     padding: 5em 10em;
 }
 
@@ -64,13 +68,12 @@ input.todo-item {
     color: white;
     margin: auto;
     padding: 1em 1em;
-    width: 80%;
 }
 
 .width80 {
-    float: left;
-    width: 80%;
+    display: flex;
     overflow: hidden;
+    align-items: center;
 }
 
 .width20 {
@@ -79,16 +82,11 @@ input.todo-item {
     overflow: hidden;
 }
 
-.width70 {
-    width: 70%;
-    float: right;
-    overflow: visible;
-}
-
 .todo-item {
     margin: 0;
     text-align: left;
     min-width: 5em;
+    padding-left: 5em;
 }
 
 .input-item {
@@ -107,31 +105,33 @@ input.todo-item {
     color: white;
     margin: auto;
     padding: 1em 1em;
-    /* width: 50%; */
 }
 
-.completed-list-header {
+.list-header {
     text-align: center;
 }
 
 .completed-container {
-    display: block;
+    margin: auto;
+    background-color: rgba(253, 253, 253, 0.1);
+    padding: 0em 10em;
 }
 
 .completed-item {
     background-color: transparent;
-    font-size: large;
+    font-size: x-large;
     border: unset;
     width: 20em;
     text-decoration: line-through;
     font-style: italic;
-    margin: 5px 0;
+    padding-left: 2em;
+    margin: 1px 0;
 }
 
 .completed-task-container {
-    margin: 0;
     background-color: rgba(15, 15, 15, 0.1);
-    padding: 2em 10em;
+    margin: auto;
+    padding: 5em 10em;
 }
 
 .completed-task-list {
