@@ -21,6 +21,10 @@
                         <button class="submit-button" type="submit" action="/todo">Add To List</button>
                     </form>        
                 </div>
+                <!-- sort by latest at the top -->
+                <% jsonBody.sort(function (a, b) { %>
+                    <% return +new Date(b.updated_at) - +new Date(a.updated_at) %>
+                <% }) %>
                 <div class="task-list"><h1 class="list-header">You need to get these done!</h1>
                     <% jsonBody.forEach((todo) => { %>
                         <% if (!todo.completed) { %>
