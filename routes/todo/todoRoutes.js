@@ -54,6 +54,7 @@ router.post('/', (req, res) => {
 })
 
 router.post('/:id', (req, res) => {
+    console.log(req.body)
     request.put({
         headers: { 'authorization': localStorage.token },
         url: `http://localhost:8080/todo/${req.params.id}`,
@@ -84,11 +85,12 @@ router.post('/delete/:id', (req, res) => {
 })
 
 router.post('/completed/:id', (req, res) => {
+    console.log(req.body)
     request.put({
         headers: { 'authorization': localStorage.token },
         url: `http://localhost:8080/todo/${req.params.id}`,
         form: {
-            completed: true,
+            completed: req.body.completed,
             updated_at: Date.now()
         }
     }, (error, response, body) => {

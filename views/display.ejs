@@ -24,36 +24,43 @@
                 <% jsonBody.forEach((todo) => { %>
                     <% if (!todo.completed) { %>
                     <div class="width80">
+                        <form action="/todo/completed/<%=todo._id%>" method="POST">
+                            <!-- <input name="completed" value="true" type="submit" src="/tick.svg" class="tick-button" alt="completed"> -->
+                            <button class="tick-button" type="submit" value="true" name="completed"></button>
+                        </form>
                         <form action="/todo/<%=todo._id%>" method="POST">
-                            <input type="checkbox" id="completed-item" name="completed-item">
-                            <label for="completed-item"><input type="text" value="<%= todo.task %>" class="todo-item" name="task">123 </label>
-                            <button class="edit-button" type="submit">Update</button>
+                            <input type="text" value="<%= todo.task %>" class="todo-item" name="task">
                         </form>    
                     </div>
                     <div class="width20">
                         <form action="/todo/delete/<%=todo._id%>" method="POST">
-                            <button class="delete-button">X</button>
+                            <input type="image" src="/quit.svg" class="delete" alt="delete">
                         </form>
                     </div>
                     <% } %>
                 <% }) %>    
             </div>
-            <div class="completed-list"><h1>Your completed tasks:</h1>
-                <% jsonBody.forEach((todo) => { %>
-                    <% if (todo.completed) { %>
-                        <div class="width80">
-                            <form action="/todo/<%=todo._id%>" method="POST">
-                                <input type="text" value="<%= todo.task %>" class="todo-item" name="task"> 
-                                <button class="edit-button" type="submit">Update</button>
-                            </form>    
-                        </div>
-                        <div class="width20">
-                            <form action="/todo/delete/<%=todo._id%>" method="POST">
-                                <button class="delete-button">X</button>
-                            </form>
-                        </div>    
-                    <% } %>
-                <% }) %>
+        </div>
+        <div class="completed-task-container">
+            <div class="completed-task-list">
+                <div class="completed-list"><h1 class="completed-list-header">Your completed tasks:</h1>
+                    <% jsonBody.forEach((todo) => { %>
+                        <% if (todo.completed) { %>
+                            <div class="completed-container">
+                                <div class="width80">
+                                    <form action="/todo/completed/<%=todo._id%>" method="POST" style="float: left;">
+                                        <button class="redo-button" type="submit" value="false" name="completed"></button>
+                                    </form>
+                                    <p class="completed-item"><%= todo.task %></p>
+                                    <form action="/todo/delete/<%=todo._id%>" method="POST">
+                                        <input type="image" src="/quit.svg" class="delete" alt="delete">
+                                    </form>
+    
+                                </div>
+                           </div>
+                        <% } %>
+                    <% }) %>
+                </div>    
             </div>
         </div>
     </body>

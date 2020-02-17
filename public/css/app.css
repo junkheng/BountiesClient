@@ -7,7 +7,7 @@ body {
 }
 
 button {
-    background: #51d67d;
+    background-color: #51d67d;
     color: black;
     font-size: large;
     border-radius: 5px;
@@ -17,10 +17,11 @@ button {
 
 input.todo-item {
     background-color: transparent;
-    font-size: large;
+    font-size: x-large;
     border: unset;
     width: 20em;
     cursor: pointer;
+    padding-left: 2em;
 }
 
 /* banner classes */
@@ -78,6 +79,12 @@ input.todo-item {
     overflow: hidden;
 }
 
+.width70 {
+    width: 70%;
+    float: right;
+    overflow: visible;
+}
+
 .todo-item {
     margin: 0;
     text-align: left;
@@ -100,25 +107,45 @@ input.todo-item {
     color: white;
     margin: auto;
     padding: 1em 1em;
-    width: 80%;
+    /* width: 50%; */
 }
 
-input[type=checkbox] + label {
-    color: #ccc;
+.completed-list-header {
+    text-align: center;
+}
+
+.completed-container {
+    display: block;
+}
+
+.completed-item {
+    background-color: transparent;
+    font-size: large;
+    border: unset;
+    width: 20em;
+    text-decoration: line-through;
     font-style: italic;
+    margin: 5px 0;
 }
 
-input[type=checkbox]:checked + label {
-    color: #f00;
-    font-style: normal;
+.completed-task-container {
+    margin: 0;
+    background-color: rgba(15, 15, 15, 0.1);
+    padding: 2em 10em;
+}
+
+.completed-task-list {
+    color: white;
+    margin: auto;
+    padding: 1em 1em;
 }
 
 /* buttons */
-.delete-button {
+.delete {
+    width: 2em;
+    height: auto;
     float: right;
-    background: rgb(243, 108, 54);
     margin: 0 0 0 2em;
-    width: 6em;
 }
 
 .submit-button {
@@ -133,4 +160,30 @@ input[type=checkbox]:checked + label {
     color: white;
     /* margin: 0 0 0 2em; */
     /* width: 6em; */
+}
+
+.redo-button {
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    background-image: url('../redo.svg');
+    background-repeat: no-repeat;
+    background-color: transparent;
+    width: 2em;
+}
+
+.tick-button {
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    background-image: url('../tick.svg');
+    background-repeat: no-repeat;
+    background-color: transparent;
+    width: 2em;
 }
