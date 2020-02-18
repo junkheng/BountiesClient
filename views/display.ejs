@@ -1,67 +1,91 @@
 <!DOCTYPE html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>ToDo List</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="/css/app.css">
-    </head>
-    <body>
-        <div class="banner-container">
-            <h1 class="banner-content">
-                Bounties
-            </h1>
-        </div>
-        <div class="main-wrapper">
-            <div class="task-container">
-                <div class="add-task-list">
-                    <form class="form-box" method="post">
-                        <input class="input-item" name="task" placeholder="I need to get this done...">
-                        <button class="submit-button" type="submit" action="/todo">Add To List</button>
-                    </form>        
-                </div>
-                <!-- sort by latest at the top -->
-                <% jsonBody.sort(function (a, b) { %>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ToDo List</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/css/app.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+
+<body>
+    <div class="banner-container">
+        <h1 class="banner-content">
+            Bounties
+        </h1>
+    </div>
+    <div class="main-wrapper">
+        <div class="task-container">
+            <div class="add-task-list">
+                <form class="form-box" method="post">
+                    <input class="input-item" name="task" placeholder="I need to get this done...">
+                    <button class="submit-button" type="submit" action="/todo">Add To List</button>
+                </form>
+            </div>
+            <div class="tabs">
+                <input type="radio" name="tabs" id="tabone" checked="checked">
+                <label for="tabone">Todo</label>
+                <div class="tab">
+                    <!-- sort by latest at the top -->
+                    <% jsonBody.sort(function (a, b) { %>
                     <% return +new Date(b.updated_at) - +new Date(a.updated_at) %>
-                <% }) %>
-                <div class="task-list"><h1 class="list-header">You need to get these done!</h1>
-                    <% jsonBody.forEach((todo) => { %>
+                    <% }) %>
+                    <div class="task-list">
+                        <h1 class="list-header">You need to get these done!</h1>
+                        <% jsonBody.forEach((todo) => { %>
                         <% if (!todo.completed) { %>
-                        <div class="width80">
-                            <form action="/todo/completed/<%=todo._id%>" method="POST">
-                               <button class="tick-button" type="submit" value="true" name="completed"></button>
-                            </form>
-                            <form action="/todo/<%=todo._id%>" method="POST">
-                                <input type="text" value="<%= todo.task %>" class="todo-item" name="task">
-                            </form>
-                            <form action="/todo/delete/<%=todo._id%>" method="POST">
-                                <input type="image" src="/quit.svg" class="delete" alt="delete">
-                            </form>
-                        </div>
+                            <div class="wrapper">
+                                <div class="box container1">
+                                    <form action="/todo/completed/<%=todo._id%>" method="POST">
+                                        <button class="tick-button" type="submit" value="true" name="completed"></button>
+                                    </form>
+                                </div>
+                                <div class="box container2">
+                                    <form action="/todo/<%=todo._id%>" method="POST">
+                                        <input type="text" value="<%= todo.task %>" class="todo-item" name="task">
+                                    </form>
+                                </div>
+                                <div class="box container3">
+                                    <form action="/todo/delete/<%=todo._id%>" method="POST">
+                                        <input type="image" src="/quit.svg" class="delete" alt="delete">
+                                    </form>    
+                                </div>
+                            </div>
                         <% } %>
-                    <% }) %>    
+                        <% }) %>
+                    </div>
+                </div>
+                <input type="radio" name="tabs" id="tabtwo">
+                <label for="tabtwo">Completed</label>
+                <div class="tab">
+                    <div class="task-list">
+                        <h1 class="list-header">Your completed tasks:</h1>
+                        <% jsonBody.forEach((todo) => { %>
+                        <% if (todo.completed) { %>
+                            <div class="wrapper">
+                                <div class="box container1">
+                                    <form action="/todo/completed/<%=todo._id%>" method="POST">
+                                        <button class="redo-button" type="submit" value="false" name="completed"></button>
+                                    </form>
+                                </div>
+                                <div class="box container2">
+                                    <p class="completed-item"><%= todo.task %></p>
+                                </div>
+                                <div class="box container3">
+                                    <form action="/todo/delete/<%=todo._id%>" method="POST">
+                                        <input type="image" src="/quit.svg" class="delete" alt="delete">
+                                    </form>    
+                                </div>
+                            </div>    
+                        <% } %>
+                        <% }) %>
+                    </div>
                 </div>
             </div>
-            <div class="completed-task-container">
-                <div class="completed-task-list"><h1 class="list-header">Your completed tasks:</h1>
-                    <% jsonBody.forEach((todo) => { %>
-                        <% if (todo.completed) { %>
-                        <div class="width80">
-                            <form action="/todo/completed/<%=todo._id%>" method="POST">
-                               <button class="redo-button" type="submit" value="false" name="completed"></button>
-                            </form>
-                            <form>
-                                <p class="completed-item"><%= todo.task %></p>
-                            </form>
-                            <form action="/todo/delete/<%=todo._id%>" method="POST">
-                                <input type="image" src="/quit.svg" class="delete" alt="delete">
-                            </form>
-                        </div>
-                        <% } %>
-                    <% }) %>    
-                </div>
-            </div>    
         </div>
-    </body>
+    </div>
+</body>
+
 </html>

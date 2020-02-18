@@ -18,7 +18,7 @@ router.get('/', (req, res) => { // only need to put '/' because in app.js file w
         request('http://localhost:8080/todo', (error, response, body) => {
             let jsonBody = JSON.parse(body)
             res.render('display', {jsonBody})
-        })    
+        })
     } catch (error) {
         res.status(500).send(error)
     }
