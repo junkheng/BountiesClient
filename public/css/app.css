@@ -19,10 +19,12 @@ input.todo-item {
     background-color: transparent;
     font-size: x-large;
     border: unset;
-    width: 20em;
+    width: -webkit-fill-available;
     cursor: pointer;
     padding-left: 2em;
+    text-overflow: ellipsis;
     overflow: visible;
+    color: white;
 }
 
 /* banner classes */
@@ -54,7 +56,6 @@ input.todo-item {
 
 .task-container {
     background-color: rgba(253, 253, 253, 0.1);
-    margin: auto;
     padding: 5em 10em;
 }
 
@@ -68,18 +69,6 @@ input.todo-item {
     color: white;
     margin: auto;
     padding: 1em 1em;
-}
-
-.width80 {
-    display: flex;
-    overflow: hidden;
-    align-items: center;
-}
-
-.width20 {
-    width: 20%;
-    float: right;
-    overflow: hidden;
 }
 
 .todo-item {
@@ -190,6 +179,44 @@ input.todo-item {
 }
 
 
+.wrapper {
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    /* grid-gap: 10px; */
+    background-color: #fff;
+    color: #444;
+  }
+
+.box {
+    background-color: rgb(7, 107, 133);
+    color: #fff;
+    /* border-radius: 5px; */
+    padding: 20px;
+    font-size: 150%;
+}
+
+.container1 {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    text-align: right;
+}
+
+.container2 {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+
+.container3 {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+
 /* tabs */
 .tabs {
 	display: flex;
@@ -211,13 +238,14 @@ input.todo-item {
 	width: 100%;
 	display: none;
     padding: 1rem;
-    background: #fff;
+    background: rgb(7, 107, 133);
 }
 .tabs input[type="radio"] {
 	display: none;
 }
 .tabs input[type="radio"]:checked + label {
-	background: #fff;
+    background: rgb(7, 107, 133);
+    color: white;
 }
 .tabs input[type="radio"]:checked + label + .tab {
 	display: block;
