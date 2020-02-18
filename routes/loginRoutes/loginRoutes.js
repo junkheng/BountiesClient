@@ -12,6 +12,10 @@ if (typeof localStorage === "undefined" || localStorage === null) {
     localStorage = new LocalStorage('./scratch');
 }
 
+router.get('/', (req, res) => {
+    res.render('index')
+})
+
 router.post('/', (req, res) => { // only need to put '/' because in app.js file we have set app.use /login and loads this loginRoutes file
     request({
         method: 'POST',
@@ -39,5 +43,33 @@ router.post('/', (req, res) => { // only need to put '/' because in app.js file 
         }
     })    
 })
+
+router.post('/signup', (req, res) => {
+    request({
+        method: 'POST',
+        url: 'http://localhost:8080/user/signup',
+        form: {
+            email: req.body.email,
+            password: req.body.password
+        }
+    }, (error, response, body) => {
+        console.log(body)
+        if (error) { return console.error('please ensure email is valid')}
+        if (response.statusCode == 409) {
+            return res.send('email already exists. please check again')
+        }
+        if (response.statusCode == 201) {
+            res.redirect('/login')
+        } else {
+            return res.send('something doesn\'t look right')
+        }
+    })
+})
+
+router.get('/signup', (req, res) => {
+    res.render('signup')
+})
+
+
 
 module.exports = router

@@ -98,6 +98,7 @@ input.todo-item {
     min-height: 3em;
     border: thin;
     border-radius: 5px;
+    font-size: large;
 }
 
 /* completed list items */
@@ -149,7 +150,7 @@ input.todo-item {
 }
 
 .submit-button {
-    width: 30;
+    height: 3em;
     color: white;
 }
 
